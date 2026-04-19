@@ -1,0 +1,35 @@
+{
+	"name": "my-mcp-server",
+	"version": "0.1.0",
+	"description": "A starter template for building your own MCP (Model Context Protocol) server in TypeScript.",
+	"type": "module",
+	"main": "dist/index.js",
+	"bin": {
+		"my-mcp-server": "dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsx watch src/index.ts",
+		"start": "node dist/index.js",
+		"start:http": "node dist/http.js",
+		"dev:http": "tsx watch src/http.ts",
+		"inspect": "npx @modelcontextprotocol/inspector tsx src/index.ts",
+		"typecheck": "tsc --noEmit",
+		"test": "tsx --test test/*.test.ts"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.32.2",
+		"zod": "^3.25.76"
+	},
+	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"tsx": "^4.19.0",
+		"typescript": "^5.6.0"
+	}
+}
