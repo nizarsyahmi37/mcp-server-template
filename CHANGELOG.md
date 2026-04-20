@@ -8,3 +8,4 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 ### Added
 
 - **project:** initialize TypeScript project with package manifest, tsconfig, gitignore and env example
+- **server:** add `createServer()` factory and central server config
