@@ -16,3 +16,4 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **prompts:** add `summarize` example prompt
 - **transport:** add stateless Streamable HTTP entrypoint served at `POST /mcp`
 - **test:** add in-memory client/server tests covering tool listing, `echo` and `add`
+- **mcp:** add sample `.mcp.json` for registering the server in MCP clients
