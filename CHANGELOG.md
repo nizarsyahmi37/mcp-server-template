@@ -3,7 +3,7 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.1.0] - 2026-04-29
 
 ### Added
 
@@ -17,3 +17,4 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **transport:** add stateless Streamable HTTP entrypoint served at `POST /mcp`
 - **test:** add in-memory client/server tests covering tool listing, `echo` and `add`
 - **mcp:** add sample `.mcp.json` for registering the server in MCP clients
+- **docs:** add README with quick start, project structure, customization steps and client configs
