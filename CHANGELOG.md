@@ -13,6 +13,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 - **tools:** declare all four annotation hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) as explicit booleans on `echo` and `add`, and add a test that enforces it
 - **tools:** handle errors explicitly in `echo` and `add`, returning an `isError` result instead of throwing
+- **http:** extract `createHttpApp()` from the HTTP entrypoint so it can be tested, bind to `127.0.0.1` by default (configurable with `HOST`), and reject request bodies over 1 MB
 
 ### Added
 
