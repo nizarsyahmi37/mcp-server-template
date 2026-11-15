@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "A starter template for building your own MCP (Model Context Protocol) server in TypeScript.",
 	"type": "module",
+  "license": "MIT",
 	"main": "dist/index.js",
 	"bin": {
 		"my-mcp-server": "dist/index.js"

@@ -75,3 +75,7 @@ Add authentication before exposing it publicly.
 | `npm run build` / `start` | Compile / run compiled stdio server |
 | `npm run inspect`         | Debug with MCP Inspector            |
 | `npm test`                | Run tests                           |
+
+## License
+
+[MIT](LICENSE)

@@ -13,6 +13,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 - **tools:** declare all four annotation hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) as explicit booleans on `echo` and `add`, and add a test that enforces it
 
+### Added
+
+- **license:** add MIT license file and declare it in `package.json`
+
 ## [0.1.0] - 2026-04-29
 
 ### Added
