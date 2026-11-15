@@ -1,12 +1,30 @@
 {
-	"name": "my-mcp-server",
+	"name": "@nizarsyahmi37/mcp-server-template",
 	"version": "0.1.0",
 	"description": "A starter template for building your own MCP (Model Context Protocol) server in TypeScript.",
+	"keywords": [
+		"mcp",
+		"model-context-protocol",
+		"mcp-server",
+		"typescript",
+		"template",
+		"boilerplate",
+		"starter"
+	],
+	"author": "nizarsyahmi37 (https://github.com/nizarsyahmi37)",
+	"homepage": "https://github.com/nizarsyahmi37/mcp-server-template#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nizarsyahmi37/mcp-server-template.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nizarsyahmi37/mcp-server-template/issues"
+	},
 	"type": "module",
-  "license": "MIT",
+	"license": "MIT",
 	"main": "dist/index.js",
 	"bin": {
-		"my-mcp-server": "dist/index.js"
+		"mcp-server-template": "dist/index.js"
 	},
 	"files": [
 		"dist"

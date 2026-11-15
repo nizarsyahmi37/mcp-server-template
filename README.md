@@ -42,7 +42,7 @@ Build first (`npm run build`), then use an absolute path:
 **Claude Code**
 
 ```bash
-claude mcp add my-mcp-server -- node /absolute/path/to/dist/index.js
+claude mcp add mcp-server-template -- node /absolute/path/to/dist/index.js
 ```
 
 **Claude Desktop / Cursor** (`mcpServers` config)
@@ -50,7 +50,7 @@ claude mcp add my-mcp-server -- node /absolute/path/to/dist/index.js
 ```json
 {
   "mcpServers": {
-    "my-mcp-server": {
+    "mcp-server-template": {
       "command": "node",
       "args": ["/absolute/path/to/dist/index.js"]
     }

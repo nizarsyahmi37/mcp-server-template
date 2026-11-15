@@ -1,6 +1,6 @@
 {
 	"mcpServers": {
-		"my-mcp-server": {
+		"mcp-server-template": {
 			"command": "npx",
 			"args": [
 				"tsx",
