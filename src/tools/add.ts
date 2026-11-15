@@ -17,7 +17,9 @@ export function registerAdd(server: McpServer) {
 			},
 			annotations: {
 				readOnlyHint: true,
-				idempotentHint: true
+				destructiveHint: false,
+				idempotentHint: true,
+				openWorldHint: false
 			},
 		},
 		async ({ a, b }) => {

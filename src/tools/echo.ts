@@ -12,7 +12,10 @@ export function registerEcho(server: McpServer) {
 				message: z.string().describe("Text to echo back")
 			},
 			annotations: {
-				readOnlyHint: true
+				readOnlyHint: true,
+				destructiveHint: false,
+				idempotentHint: true,
+				openWorldHint: false
 			},
 		},
 		async ({ message }) => ({

@@ -59,3 +59,13 @@ test("add returns structured sum", async () => {
 
 	assert.equal(res.structuredContent.sum, 5);
 });
+
+test("every tool declares all four annotation hints", async () => {
+	const client = await connect();
+	const { tools } = await client.listTools();
+	for (const tool of tools) {
+		for (const hint of ["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"] as const) {
+			assert.equal(typeof tool.annotations?.[hint], "boolean", `${tool.name} is missing ${hint}`);
+		}
+	}
+});

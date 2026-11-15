@@ -9,6 +9,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 
 - **deps:** upgrade `zod` from 3.25.76 to 4.6.7 to fix GHSA-mrhx-c7xc-m3w5 (memory exhaustion when validating oversized constrained collections)
 
+### Changed
+
+- **tools:** declare all four annotation hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) as explicit booleans on `echo` and `add`, and add a test that enforces it
+
 ## [0.1.0] - 2026-04-29
 
 ### Added
