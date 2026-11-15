@@ -1,6 +1,6 @@
 # MCP Server Starter
 
-[![M8ven Verified](https://m8ven.ai/badge/mcp/nizarsyahmi37-mcp-server-template-1prs1i?variant=verified&v=8900bdd59e2046617602db6244923171)](https://m8ven.ai/mcp/nizarsyahmi37-mcp-server-template-1prs1i?s=readme)
+[![M8ven Verified](https://m8ven.ai/badge/mcp/nizarsyahmi37-mcp-server-template-1prs1i?variant=verified)](https://m8ven.ai/mcp/nizarsyahmi37-mcp-server-template-1prs1i?s=readme)
 
 A minimal, batteries-included template for building your own
 [Model Context Protocol](https://modelcontextprotocol.io) server in TypeScript.
