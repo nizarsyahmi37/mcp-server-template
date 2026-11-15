@@ -16,7 +16,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **http:** extract `createHttpApp()` from the HTTP entrypoint so it can be tested, bind to `127.0.0.1` by default (configurable with `HOST`), and reject request bodies over 1 MB
 - **package:** publish as `@nizarsyahmi37/mcp-server-template`, add `homepage`, `repository`, `bugs`, `author` and `keywords` metadata, and rename the server and `bin` to `mcp-server-template`
 - **test:** compile tests with `tsc` and run them with the built-in Node test runner, and drop `tsx` from devDependencies (watch scripts now use `npx tsx`), so installing and testing no longer pulls in native `esbuild` binaries
-- **ci:** pin the runner to `ubuntu-24.04` instead of `ubuntu-latest` so the `ubuntu-latest` migration to Ubuntu 26 does not change the build environment
+- **ci:** run on `ubuntu-26.04` instead of `ubuntu-latest`, adopting the generally available Ubuntu 26.04 runner image ahead of the `ubuntu-latest` migration and keeping the build environment explicit
 
 ### Added
 
