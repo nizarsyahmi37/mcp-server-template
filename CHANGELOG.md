@@ -15,6 +15,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **tools:** handle errors explicitly in `echo` and `add`, returning an `isError` result instead of throwing
 - **http:** extract `createHttpApp()` from the HTTP entrypoint so it can be tested, bind to `127.0.0.1` by default (configurable with `HOST`), and reject request bodies over 1 MB
 - **package:** publish as `@nizarsyahmi37/mcp-server-template`, add `homepage`, `repository`, `bugs`, `author` and `keywords` metadata, and rename the server and `bin` to `mcp-server-template`
+- **test:** compile tests with `tsc` and run them with the built-in Node test runner, and drop `tsx` from devDependencies (watch scripts now use `npx tsx`), so installing and testing no longer pulls in native `esbuild` binaries
 
 ### Added
 
