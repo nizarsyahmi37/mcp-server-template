@@ -23,16 +23,26 @@ export function registerAdd(server: McpServer) {
 			},
 		},
 		async ({ a, b }) => {
-			const sum = a + b;
-			return {
-				content: [{
-					type: "text",
-					text: String(sum)
-				}],
-				structuredContent: {
-					sum
-				},
-			};
+			try {
+				const sum = a + b;
+				return {
+					content: [{
+						type: "text",
+						text: String(sum)
+					}],
+					structuredContent: {
+						sum
+					},
+				};
+			} catch (error) {
+				return {
+					isError: true,
+					content: [{
+						type: "text",
+						text: `add failed: ${error instanceof Error ? error.message : String(error)}`
+					}],
+				};
+			}
 		},
 	);
 }

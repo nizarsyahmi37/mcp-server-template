@@ -12,6 +12,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 ### Changed
 
 - **tools:** declare all four annotation hints (`readOnlyHint`, `destructiveHint`, `idempotentHint`, `openWorldHint`) as explicit booleans on `echo` and `add`, and add a test that enforces it
+- **tools:** handle errors explicitly in `echo` and `add`, returning an `isError` result instead of throwing
 
 ### Added
 

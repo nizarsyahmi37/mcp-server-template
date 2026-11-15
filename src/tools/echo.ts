@@ -18,11 +18,23 @@ export function registerEcho(server: McpServer) {
 				openWorldHint: false
 			},
 		},
-		async ({ message }) => ({
-			content: [{
-				type: "text",
-				text: message
-			}],
-		}),
+		async ({ message }) => {
+			try {
+				return {
+					content: [{
+						type: "text",
+						text: message
+					}],
+				};
+			} catch (error) {
+				return {
+					isError: true,
+					content: [{
+						type: "text",
+						text: `echo failed: ${error instanceof Error ? error.message : String(error)}`
+					}],
+				};
+			}
+		},
 	);
 }
