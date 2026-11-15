@@ -17,8 +17,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **package:** publish as `@nizarsyahmi37/mcp-server-template`, add `homepage`, `repository`, `bugs`, `author` and `keywords` metadata, and rename the server and `bin` to `mcp-server-template`
 - **test:** compile tests with `tsc` and run them with the built-in Node test runner, and drop `tsx` from devDependencies (watch scripts now use `npx tsx`), so installing and testing no longer pulls in native `esbuild` binaries
 - **ci:** run on `ubuntu-26.04` instead of `ubuntu-latest`, adopting the generally available Ubuntu 26.04 runner image ahead of the `ubuntu-latest` migration and keeping the build environment explicit
-- **tools:** define the `echo` and `add` example tools directly in `createServer()` with the flat `server.tool(name, description, schema, annotations, handler)` form, so each handler sits next to the server and its description. `src/tools/` remains the registry for additional tools. `add` no longer declares an `outputSchema` but still returns `structuredContent`
 - **readme:** point the M8ven badge at the project's current verification listing, without a cache-busting version parameter
+- **tools:** register `echo` and `add` in `createServer()` with the flat `server.tool(name, description, schema, annotations, handler)` form, with the tool logic in `src/tools/echo.ts` and `src/tools/add.ts` called from the inline handlers. `add` no longer declares an `outputSchema` but still returns `structuredContent`
 
 ### Added
 

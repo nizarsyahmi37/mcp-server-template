@@ -1,6 +1,8 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { SERVER_INFO } from "./config.js";
+import { add } from "./tools/add.js";
+import { echo } from "./tools/echo.js";
 import { registerTools } from "./tools/index.js";
 import { registerResources } from "./resources/index.js";
 import { registerPrompts } from "./prompts/index.js";
@@ -9,8 +11,8 @@ import { registerPrompts } from "./prompts/index.js";
 export function createServer(): McpServer {
 	const server = new McpServer(SERVER_INFO);
 
-	// Example tools live next to the server so each handler is easy to find
-	// and read alongside its description. Add larger tools in src/tools/.
+	// Each tool is registered here, next to its description and annotations.
+	// The handler delegates to the tool's logic in src/tools/<name>.ts.
 	server.tool(
 		"echo",
 		"Echoes back the provided message.",
@@ -29,7 +31,7 @@ export function createServer(): McpServer {
 				return {
 					content: [{
 						type: "text",
-						text: message
+						text: echo(message)
 					}],
 				};
 			} catch (error) {
@@ -60,7 +62,7 @@ export function createServer(): McpServer {
 		},
 		async ({ a, b }) => {
 			try {
-				const sum = a + b;
+				const sum = add(a, b);
 
 				return {
 					content: [{

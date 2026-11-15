@@ -23,7 +23,7 @@ src/
 	server.ts          createServer(): wires tools/resources/prompts
 	index.ts           stdio entrypoint (Claude Desktop, Claude Code, Cursor…)
 	http.ts            Streamable HTTP entrypoint (remote use, POST /mcp)
-	tools/             registry for extra tools you add (echo/add live in server.ts)
+	tools/             tool logic (echo.ts, add.ts) + registry for extra tools
 	resources/         read-only data exposed to the client
 	prompts/           reusable prompt templates
 test/                tests using an in-memory client<->server transport
@@ -32,7 +32,7 @@ test/                tests using an in-memory client<->server transport
 ## Make it yours
 
 1. Rename the package in `package.json` and `src/config.ts`.
-2. Add a tool: copy the `echo` example in `src/server.ts` (or put it in its own `src/tools/<name>.ts` and register it in `src/tools/index.ts`), then change the name, schema and handler.
+2. Add a tool: put its logic in `src/tools/<name>.ts`, then register it in `src/server.ts` by copying the `echo` example (name, description, schema, annotations, handler).
 3. Delete the examples you don't need (`add`, `greeting`, `summarize`).
 
 ## Connect it to a client
