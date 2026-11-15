@@ -1,10 +1,12 @@
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { createServer as createHttpServer, type IncomingMessage, type Server, type ServerResponse } from "node:http";
 import { createServer } from "./server.js";
+import { isAuthorized } from "./middleware/auth.js";
 
 const MAX_BODY_BYTES = 1_000_000;
 
 export interface HttpAppOptions {
+	authToken?: string;
 }
 
 function reject(res: ServerResponse, status: number, message: string, headers: Record<string, string> = {}) {
@@ -31,6 +33,10 @@ export function createHttpApp(options: HttpAppOptions = {}): Server {
 	return createHttpServer(async (req, res) => {
 		if (req.url !== "/mcp") return reject(res, 404, "Not found");
 		if (req.method !== "POST") return reject(res, 405, "Method not allowed", { Allow: "POST" });
+
+		if (options.authToken && !isAuthorized(req, options.authToken)) {
+			return reject(res, 401, "Unauthorized", { "WWW-Authenticate": 'Bearer realm="mcp"' });
+		}
 
 		const raw = await readBody(req);
 

@@ -20,6 +20,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **license:** add MIT license file and declare it in `package.json`
 - **privacy:** add `PRIVACY.md` privacy policy template for servers published to directories
 - **readme:** add M8ven verification badge
+- **http:** add optional bearer-token authentication via `MCP_AUTH_TOKEN` (constant-time comparison, `401` with `WWW-Authenticate` on failure) and warn when serving on a non-loopback address without it
 
 ## [0.1.0] - 2026-04-29
 

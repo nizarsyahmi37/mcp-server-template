@@ -7,3 +7,5 @@ export const SERVER_INFO = {
 export const PORT = Number(process.env.PORT ?? 3000);
 /** Bind to loopback by default. Set HOST=0.0.0.0 only behind authentication. */
 export const HOST = process.env.HOST ?? "127.0.0.1";
+/** When set, every HTTP request must send `Authorization: Bearer <token>`. */
+export const AUTH_TOKEN = process.env.MCP_AUTH_TOKEN || undefined;

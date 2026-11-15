@@ -53,3 +53,14 @@ test("http: rejects non-POST and unknown paths", async () => {
 		assert.equal((await fetch(url.replace("/mcp", "/nope"))).status, 404);
 	});
 });
+
+test("http: requires a bearer token when configured", async () => {
+	await withApp({ authToken: "s3cret" }, async (url) => {
+		const denied = await post(url);
+
+		assert.equal(denied.status, 401);
+		assert.match(denied.headers.get("www-authenticate") ?? "", /Bearer/);
+		assert.equal((await post(url, { authorization: "Bearer wrong" })).status, 401);
+		assert.equal((await post(url, { authorization: "Bearer s3cret" })).status, 200);
+	});
+});
