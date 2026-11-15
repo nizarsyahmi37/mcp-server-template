@@ -1,7 +1,7 @@
 /** Central place for server identity and config. Rename these for your project. */
 export const SERVER_INFO = {
 	name: "mcp-server-template",
-	version: "0.1.0",
+	version: "0.2.0",
 } as const;
 
 export const PORT = Number(process.env.PORT ?? 3000);
