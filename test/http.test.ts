@@ -64,3 +64,15 @@ test("http: requires a bearer token when configured", async () => {
 		assert.equal((await post(url, { authorization: "Bearer s3cret" })).status, 200);
 	});
 });
+
+test("http: rate limits clients after the configured maximum", async () => {
+	await withApp({ rateLimit: { max: 2, windowMs: 60_000 } }, async (url) => {
+		assert.equal((await post(url)).status, 200);
+		assert.equal((await post(url)).status, 200);
+
+		const limited = await post(url);
+
+		assert.equal(limited.status, 429);
+		assert.ok(Number(limited.headers.get("retry-after")) >= 1);
+	});
+});

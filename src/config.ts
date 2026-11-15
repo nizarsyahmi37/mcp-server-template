@@ -9,3 +9,9 @@ export const PORT = Number(process.env.PORT ?? 3000);
 export const HOST = process.env.HOST ?? "127.0.0.1";
 /** When set, every HTTP request must send `Authorization: Bearer <token>`. */
 export const AUTH_TOKEN = process.env.MCP_AUTH_TOKEN || undefined;
+
+/** Per-client request limit for the HTTP endpoint. */
+export const RATE_LIMIT = {
+	max: Number(process.env.RATE_LIMIT_MAX ?? 60),
+	windowMs: Number(process.env.RATE_LIMIT_WINDOW_MS ?? 60_000),
+};

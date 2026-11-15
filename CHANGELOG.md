@@ -21,6 +21,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 - **privacy:** add `PRIVACY.md` privacy policy template for servers published to directories
 - **readme:** add M8ven verification badge
 - **http:** add optional bearer-token authentication via `MCP_AUTH_TOKEN` (constant-time comparison, `401` with `WWW-Authenticate` on failure) and warn when serving on a non-loopback address without it
+- **http:** add per-client in-memory rate limiting (`RATE_LIMIT_MAX`, `RATE_LIMIT_WINDOW_MS`; `429` with `Retry-After` when exceeded)
 
 ## [0.1.0] - 2026-04-29
 

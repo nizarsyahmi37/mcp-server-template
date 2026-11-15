@@ -2,11 +2,13 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { createServer as createHttpServer, type IncomingMessage, type Server, type ServerResponse } from "node:http";
 import { createServer } from "./server.js";
 import { isAuthorized } from "./middleware/auth.js";
+import { createRateLimiter, type RateLimitOptions } from "./middleware/rateLimit.js";
 
 const MAX_BODY_BYTES = 1_000_000;
 
 export interface HttpAppOptions {
 	authToken?: string;
+	rateLimit?: RateLimitOptions;
 }
 
 function reject(res: ServerResponse, status: number, message: string, headers: Record<string, string> = {}) {
@@ -30,9 +32,17 @@ async function readBody(req: IncomingMessage): Promise<string | undefined> {
 
 /** Stateless Streamable HTTP transport: a fresh server per request. */
 export function createHttpApp(options: HttpAppOptions = {}): Server {
+	const limiter = options.rateLimit && createRateLimiter(options.rateLimit);
+
 	return createHttpServer(async (req, res) => {
 		if (req.url !== "/mcp") return reject(res, 404, "Not found");
 		if (req.method !== "POST") return reject(res, 405, "Method not allowed", { Allow: "POST" });
+
+		const limit = limiter?.check(req.socket.remoteAddress ?? "unknown");
+
+		if (limit && !limit.allowed) {
+			return reject(res, 429, "Too many requests", { "Retry-After": String(limit.retryAfterSeconds) });
+		}
 
 		if (options.authToken && !isAuthorized(req, options.authToken)) {
 			return reject(res, 401, "Unauthorized", { "WWW-Authenticate": 'Bearer realm="mcp"' });
