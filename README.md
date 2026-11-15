@@ -58,8 +58,18 @@ claude mcp add mcp-server-template -- node /absolute/path/to/dist/index.js
 }
 ```
 
-**Remote (HTTP):** `npm run start:http`, then point a client at `http://localhost:3000/mcp`.
-Add authentication before exposing it publicly.
+**Remote (HTTP):** `npm run start:http`, then point a client at `http://127.0.0.1:3000/mcp`.
+
+The HTTP server is secure by default for local use and configurable for deployment:
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HOST` | `127.0.0.1` | Bind address. Only set `0.0.0.0` behind authentication. |
+| `MCP_AUTH_TOKEN` | unset | When set, requests need `Authorization: Bearer <token>`. |
+| `RATE_LIMIT_MAX` | `60` | Max requests per client per window. |
+| `RATE_LIMIT_WINDOW_MS` | `60000` | Rate limit window length. |
+
+Rate limiting is per client IP and kept in memory. Behind a reverse proxy every request shares the proxy's IP, so rate limit at the proxy as well.
 
 ## Notes
 
